@@ -1,0 +1,13 @@
+{
+  "presets": ["react"],
+  "plugins": [
+    "react-hot-loader/babel",
+    "lodash",
+    [
+      "ramda",
+      {
+        "useES": true
+      }
+    ]
+  ]
+}
