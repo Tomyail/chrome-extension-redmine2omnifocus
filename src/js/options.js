@@ -58,11 +58,13 @@ const onCheck = (id, e) => {
 
 const onSave = () => {
   R.forEach(item => {
-    if (config[item.id]) {
-      item.value = config[item.id];
+    const itemId = config[item.id]
+    const itemIsChecked = `${itemId}_checked`
+    if (itemId) {
+      item.value = itemId;
     }
-    if (config.hasOwnProperty(`${item.id}_checked`)) {
-      item.isChecked = config[`${item.id}_checked`];
+    if (config.hasOwnProperty(itemIsChecked)) {
+      item.isChecked = config[itemIsChecked];
     }
   })(globalConfig);
   const result = R.filter(
@@ -78,10 +80,7 @@ const onSave = () => {
 };
 class Options extends Component {
   render() {
-    const redmine = R.filter(R.propEq('group', 'redmine'))(this.props.config);
-    const omnifocus = R.filter(R.propEq('group', 'omnifocus'))(
-      this.props.config
-    );
+    const [ redmine, omnifocus ] = ['redmine', 'omnifocus'].map(i => R.filter(R.propEq('group', i))(this.props.config))
     return (
       <div>
         {redmine.map((item, key) => (

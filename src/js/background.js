@@ -2,7 +2,7 @@ import '../img/icon-128.png';
 import '../img/icon-34.png';
 import * as R from 'ramda';
 import * as _ from 'lodash';
-import qs from 'qs';
+import { stringify } from 'qs';
 
 const fname = { name: 'name', fn: item => _.get(item, 'assigned_to.name') };
 const fdesc = { name: 'description', fn: item => _.get(item, 'description') };
@@ -20,7 +20,6 @@ function main(config) {
   const REDMINE_URL = R.find(R.propEq('id', 'redmineUrl'))(config).value;
   const REDMINE_API_KEY = R.find(R.propEq('id', 'redmineApiKey'))(config).value;
   const omnifocusContext = R.filter(R.propEq('group', 'omnifocus'))(config);
-  const delay = 500;
   run();
   async function run() {
     const { tab, issueUrl } = await getRedmineIssueUrl();
@@ -53,10 +52,10 @@ function main(config) {
     setInterval(() => {
       if (mapToOmniFocus.length) {
         const om = mapToOmniFocus.pop();
-        console.log(`omnifocus:///add?${qs.stringify(om)}`);
-        openUrl(tab.id, `omnifocus:///add?${qs.stringify(om)}`);
+        console.log(`omnifocus:///add?${stringify(om)}`);
+        openUrl(tab.id, `omnifocus:///add?${stringify(om)}`);
       }
-    }, delay);
+    }, 500);
   }
 
   function openUrl(tabId, url) {
