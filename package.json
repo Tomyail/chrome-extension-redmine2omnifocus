@@ -17,7 +17,7 @@
     "babel-plugin-ramda": "^1.6.3",
     "babel-preset-react": "^6.16.0",
     "clean-webpack-plugin": "^0.1.17",
-    "copy-webpack-plugin": "^4.2.0",
+    "copy-webpack-plugin": "4.6.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.11.2",
     "fs-extra": "^0.30.0",
