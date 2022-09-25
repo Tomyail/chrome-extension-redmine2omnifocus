@@ -7,8 +7,8 @@
     "start": "node utils/webserver.js"
   },
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react": "15.7.0",
+    "react-dom": "15.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
